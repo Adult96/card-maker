@@ -1,0 +1,40 @@
+@value makerWhite,makerGreen from '/src/common/colors.css';
+
+.main {
+  width: 30rem;
+}
+
+.login {
+  text-align: center;
+  background-color: makerWhite;
+  padding: 1rem 0;
+  font-size: 2rem;
+}
+
+h1 {
+  margin: 0;
+}
+
+ul {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  padding: 1rem 0;
+}
+
+li {
+  padding: 0.3rem 0;
+}
+
+.google,
+.github {
+  width: 90%;
+  outline: 0;
+  border: 0.2em solid makerGreen;
+  border-radius: 2rem;
+  background-color: makerWhite;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 1rem;
+}

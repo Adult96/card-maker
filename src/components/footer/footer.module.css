@@ -1,0 +1,11 @@
+@value makerWhite,makerGreen from '/src/common/colors.css';
+
+.sign {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  color: makerWhite;
+  background-color: makerGreen;
+  font-size: 1.5rem;
+  padding: 1rem 0;
+}

@@ -1,4 +1,3 @@
-import firebase from './firebase';
 import {
   getAuth,
   signInWithPopup,
@@ -20,9 +19,9 @@ class AuthService {
 
   getProvider(providerName) {
     switch (providerName) {
-      case 'google':
+      case 'Google':
         return this.googleProvider;
-      case 'github':
+      case 'Github':
         return this.githubProvider;
       default:
         throw new Error(`not supported provider${providerName}`);
