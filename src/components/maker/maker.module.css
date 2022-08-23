@@ -1,0 +1,9 @@
+@value makerBlack,makerWhite,makerGrey from '../../common/colors.css';
+
+.maker {
+  width: 80%;
+}
+
+.home {
+  background-color: makerWhite;
+}

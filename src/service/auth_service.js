@@ -9,12 +9,22 @@ class AuthService {
   constructor() {
     this.googleProvider = new GoogleAuthProvider();
     this.githubProvider = new GithubAuthProvider();
-    this.getAuth = getAuth();
+    this.firebaseApp = getAuth();
   }
 
-  login(provider) {
+  logIn(provider) {
     const authProvider = this.getProvider(provider);
-    return signInWithPopup(this.getAuth, authProvider);
+    return signInWithPopup(this.firebaseApp, authProvider);
+  }
+
+  logOut() {
+    return this.firebaseApp.signOut();
+  }
+
+  onAuthChange(onUserChanged) {
+    this.firebaseApp.onAuthStateChanged((user) => {
+      onUserChanged(user);
+    });
   }
 
   getProvider(providerName) {
