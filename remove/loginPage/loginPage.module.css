@@ -1,0 +1,74 @@
+@value makerWhite,makerGreen from '/src/common/colors.css';
+
+.login {
+  width: 30rem;
+  background-color: makerWhite;
+  margin: auto;
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  background-color: makerGreen;
+}
+
+.logo {
+  width: 3rem;
+  height: 2rem;
+  margin: 1rem 0;
+}
+
+.logoName {
+  font-size: 2rem;
+  font-weight: 700;
+  color: makerWhite;
+  margin: 0;
+  margin-bottom: 1rem;
+}
+
+.selectLogin {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 0 0 2rem 0;
+}
+
+.LoginTitle {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin: 1rem 0;
+}
+
+.google {
+  width: 80%;
+  margin-bottom: 0.5em;
+}
+
+.github {
+  width: 80%;
+}
+
+.google,
+.github {
+  outline: 0;
+  border: 0.2rem solid makerGreen;
+  background-color: makerWhite;
+  border-radius: 1rem;
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.sign {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  color: makerWhite;
+  background-color: makerGreen;
+  font-size: 1.5rem;
+  padding: 1rem 0;
+}
