@@ -4,6 +4,8 @@ import Footer from '../footer/footer';
 import styles from './maker.module.css';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
+import Editor from '../editor/editor';
+import Preview from '../preview/preview';
 
 const Maker = ({ authService }) => {
   const navigate = useNavigate();
@@ -24,7 +26,10 @@ const Maker = ({ authService }) => {
   return (
     <section className={styles.maker}>
       <Header onLogOut={onLogOut} />
-      <section className={styles.main}>sdfsd</section>
+      <section className={styles.container}>
+        <Editor />
+        <Preview />
+      </section>
       <Footer />
     </section>
   );

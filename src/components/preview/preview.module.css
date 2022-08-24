@@ -1,0 +1,11 @@
+@value makerBlack,makerWhite,makerGrey,makerGreen from '../../common/colors.css';
+
+.preview {
+  flex-basis: 50%;
+}
+
+.title {
+  text-align: center;
+  margin: 1em;
+  color: makerGreen;
+}
