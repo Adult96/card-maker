@@ -2,69 +2,76 @@ import React from 'react';
 import { useRef } from 'react';
 import Button from '../button/button';
 import ImageFileInput from '../image_file_input/image_file_input';
-import styles from './card_form.module.css';
+import styles from './card_add.module.css';
 
-const CardForm = ({ information }) => {
-  // const nameRef = useRef(information.name);
-  // const companyRef = useRef(information.company);
-  // const positionRef = useRef(information.position);
-  // const emailRef = useRef(information.email);
-  // const messageRef = useRef(information.message);
-  const { name, company, theme, position, email, message, fileName, fileURL } =
-    information;
+const CardAdd = ({ addCard }) => {
+  const formRef = useRef();
+  const nameRef = useRef();
+  const companyRef = useRef();
+  const themeRef = useRef();
+  const positionRef = useRef();
+  const emailRef = useRef();
+  const messageRef = useRef();
 
   const onSumit = (e) => {
     e.preventDefault();
+    const card = {
+      key: Date.now(),
+      name: nameRef.current.value || '',
+      company: companyRef.current.value || '',
+      theme: themeRef.current.value,
+      position: positionRef.current.value || '',
+      email: emailRef.current.value || '',
+      message: messageRef.current.value || '',
+      fileName: 'sungin',
+      fileURL: null,
+    };
+    formRef.current.reset();
+    addCard(card);
   };
-
   return (
-    <form className={styles.form}>
+    <form ref={formRef} className={styles.form}>
       <input
-        // ref={nameRef}
+        ref={nameRef}
         className={styles.input}
         type='text'
-        value={name}
         placeholder='Name'
       />
       <input
-        // // ref={companyRef}
+        ref={companyRef}
         className={styles.input}
         type='text'
-        value={company}
         placeholder='Company'
       />
-      <select className={styles.select} type='text'>
+      <select ref={themeRef} className={styles.select} type='text'>
         <option value='light'>light</option>
         <option value='dark'>dark</option>
         <option value='colorful'>colorful</option>
       </select>
       <input
-        // // ref={positionRef}
+        ref={positionRef}
         className={styles.input}
         type='text'
-        value={position}
         placeholder='Position'
       />
       <input
-        // // ref={emailRef}
+        ref={emailRef}
         className={styles.input}
         type='text'
-        value={email}
         placeholder='Email'
       />
       <textarea
-        // ref={messageRef}
+        ref={messageRef}
         className={styles.textarea}
         type='text'
-        value={message}
         placeholder='Message'
       />
       <div className={styles.fileInput}>
         <ImageFileInput />
       </div>
-      <Button name={'Delet'} onClick={onSumit} />
+      <Button name={'Add'} onClick={onSumit} />
     </form>
   );
 };
 
-export default CardForm;
+export default CardAdd;
