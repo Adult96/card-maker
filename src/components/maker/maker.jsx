@@ -8,7 +8,7 @@ import Editor from '../editor/editor';
 import Preview from '../preview/preview';
 import { useState } from 'react';
 
-const Maker = ({ authService }) => {
+const Maker = ({ FileInput, authService }) => {
   const [information, setInformation] = useState({
     1: {
       id: '1',
@@ -18,7 +18,7 @@ const Maker = ({ authService }) => {
       position: 'google',
       email: 'google',
       message: 'hi',
-      fileName: 'singin',
+      fileName: null,
       fileURL: null,
     },
     2: {
@@ -29,7 +29,7 @@ const Maker = ({ authService }) => {
       position: 'google',
       email: 'google',
       message: 'hi',
-      fileName: 'singin',
+      fileName: null,
       fileURL: null,
     },
   });
@@ -67,6 +67,7 @@ const Maker = ({ authService }) => {
       <Header onLogOut={onLogOut} />
       <section className={styles.container}>
         <Editor
+          FileInput={FileInput}
           information={information}
           addCard={CreateOrUpdateCard}
           deleteCard={deleteCard}
