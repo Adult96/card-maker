@@ -4,60 +4,87 @@ import Button from '../button/button';
 import ImageFileInput from '../image_file_input/image_file_input';
 import styles from './card_form.module.css';
 
-const CardForm = ({ information }) => {
-  // const nameRef = useRef(information.name);
-  // const companyRef = useRef(information.company);
-  // const positionRef = useRef(information.position);
-  // const emailRef = useRef(information.email);
-  // const messageRef = useRef(information.message);
-  const { name, company, theme, position, email, message, fileName, fileURL } =
-    information;
+const CardForm = ({ information, deleteCard, updateCard }) => {
+  const {
+    id,
+    name,
+    company,
+    theme,
+    position,
+    email,
+    message,
+    fileName,
+    fileURL,
+  } = information;
 
   const onSumit = (e) => {
     e.preventDefault();
+    deleteCard(id);
+  };
+
+  const onChange = (e) => {
+    if (e.currentTarget === null) {
+      return;
+    }
+    e.preventDefault();
+    updateCard({
+      ...information,
+      [e.currentTarget.name]: e.currentTarget.value,
+    });
   };
 
   return (
     <form className={styles.form}>
       <input
-        // ref={nameRef}
         className={styles.input}
         type='text'
+        name='name'
         value={name}
         placeholder='Name'
+        onChange={onChange}
       />
       <input
-        // // ref={companyRef}
         className={styles.input}
         type='text'
+        name='company'
         value={company}
         placeholder='Company'
+        onChange={onChange}
       />
-      <select className={styles.select} type='text'>
+      <select
+        className={styles.select}
+        type='text'
+        name='theme'
+        value={theme}
+        onChange={onChange}
+      >
         <option value='light'>light</option>
         <option value='dark'>dark</option>
         <option value='colorful'>colorful</option>
       </select>
       <input
-        // // ref={positionRef}
         className={styles.input}
         type='text'
+        name='position'
         value={position}
         placeholder='Position'
+        onChange={onChange}
       />
       <input
-        // // ref={emailRef}
         className={styles.input}
         type='text'
+        name='email'
         value={email}
         placeholder='Email'
+        onChange={onChange}
       />
       <textarea
-        // ref={messageRef}
         className={styles.textarea}
         type='text'
+        name='message'
         value={message}
         placeholder='Message'
+        onChange={onChange}
       />
       <div className={styles.fileInput}>
         <ImageFileInput />

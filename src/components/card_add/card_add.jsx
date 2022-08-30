@@ -16,7 +16,7 @@ const CardAdd = ({ addCard }) => {
   const onSumit = (e) => {
     e.preventDefault();
     const card = {
-      key: Date.now(),
+      id: Date.now(),
       name: nameRef.current.value || '',
       company: companyRef.current.value || '',
       theme: themeRef.current.value,

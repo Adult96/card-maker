@@ -9,9 +9,9 @@ import Preview from '../preview/preview';
 import { useState } from 'react';
 
 const Maker = ({ authService }) => {
-  const [information, setInformation] = useState([
-    {
-      key: 1,
+  const [information, setInformation] = useState({
+    1: {
+      id: '1',
       name: 'Sungin',
       company: 'google',
       theme: 'light',
@@ -21,8 +21,8 @@ const Maker = ({ authService }) => {
       fileName: 'singin',
       fileURL: null,
     },
-    {
-      key: 2,
+    2: {
+      id: '2',
       name: 'Sungin',
       company: 'google',
       theme: 'colorful',
@@ -32,7 +32,7 @@ const Maker = ({ authService }) => {
       fileName: 'singin',
       fileURL: null,
     },
-  ]);
+  });
 
   const navigate = useNavigate();
   const onLogOut = () => {
@@ -47,14 +47,31 @@ const Maker = ({ authService }) => {
     });
   });
 
-  const addCard = (card) => {
-    setInformation([...information, card]);
+  const deleteCard = (id) => {
+    setInformation((information) => {
+      const deleted = { ...information };
+      delete deleted[id];
+      return deleted;
+    });
+  };
+
+  const CreateOrUpdateCard = (card) => {
+    setInformation((information) => {
+      const updated = { ...information };
+      updated[card.id] = card;
+      return updated;
+    });
   };
   return (
     <section className={styles.maker}>
       <Header onLogOut={onLogOut} />
       <section className={styles.container}>
-        <Editor information={information} addCard={addCard} />
+        <Editor
+          information={information}
+          addCard={CreateOrUpdateCard}
+          deleteCard={deleteCard}
+          updateCard={CreateOrUpdateCard}
+        />
         <Preview information={information} />
       </section>
       <Footer />
