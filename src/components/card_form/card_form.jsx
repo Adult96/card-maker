@@ -1,20 +1,10 @@
 import React from 'react';
-import { useRef } from 'react';
 import Button from '../button/button';
 import styles from './card_form.module.css';
 
 const CardForm = ({ FileInput, information, deleteCard, updateCard }) => {
-  const {
-    id,
-    name,
-    company,
-    theme,
-    position,
-    email,
-    message,
-    fileName,
-    fileURL,
-  } = information;
+  const { id, name, company, theme, position, email, message, fileName } =
+    information;
 
   const onSumit = (e) => {
     e.preventDefault();
