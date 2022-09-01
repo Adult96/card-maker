@@ -8,7 +8,7 @@ const CardForm = ({ FileInput, information, deleteCard, updateCard }) => {
 
   const onSumit = (e) => {
     e.preventDefault();
-    deleteCard(id);
+    deleteCard(information);
   };
 
   const onChange = (e) => {

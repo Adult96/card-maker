@@ -5,9 +5,11 @@ import Footer from '../footer/footer';
 import Header from '../header/header';
 import styles from './login.module.css';
 
-const Login = ({ authService }) => {
+const Login = ({ authService, cardData }) => {
   const navigate = useNavigate();
   const goToMaker = (userId) => {
+    const data = cardData.getData(userId);
+    console.log(data);
     navigate('/maker', { state: { id: userId } });
   };
   const onlogin = (e) => {
@@ -21,6 +23,7 @@ const Login = ({ authService }) => {
       user && goToMaker(user.uid);
     });
   });
+
   return (
     <section className={styles.main}>
       <Header />
