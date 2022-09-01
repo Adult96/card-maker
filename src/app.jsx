@@ -7,10 +7,7 @@ function App({ FileInput, authService, cardData }) {
     <div className={styles.app}>
       <BrowserRouter>
         <Routes>
-          <Route
-            path='/'
-            element={<Login authService={authService} cardData={cardData} />}
-          />
+          <Route path='/' element={<Login authService={authService} />} />
           <Route
             path='/maker'
             element={

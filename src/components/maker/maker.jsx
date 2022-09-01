@@ -26,7 +26,7 @@ const Maker = ({ FileInput, authService, cardData }) => {
         navigate('/');
       }
     });
-  });
+  }, [userId, authService, navigate]);
 
   useEffect(() => {
     if (!userId) {
