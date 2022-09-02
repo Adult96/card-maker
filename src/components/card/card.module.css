@@ -9,6 +9,7 @@
   border: 1px solid makerBlack;
   box-shadow: 6px 6px 8px 0px makerShadow;
   max-width: 40rem;
+  word-break: break-all;
 }
 
 .card.dark {

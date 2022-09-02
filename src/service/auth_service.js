@@ -12,7 +12,7 @@ class AuthService {
     this.firebaseApp = getAuth();
   }
 
-  logIn(provider) {
+  async logIn(provider) {
     const authProvider = this.getProvider(provider);
     return signInWithPopup(this.firebaseApp, authProvider);
   }

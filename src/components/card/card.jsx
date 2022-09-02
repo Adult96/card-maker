@@ -1,11 +1,13 @@
-import React from 'react';
+import { render } from '@testing-library/react';
+import React, { memo } from 'react';
 import styles from './card.module.css';
 
 const DEFAULT_IMAGE = '/images/default_logo.png';
-const Card = ({ information }) => {
-  const { name, company, theme, position, email, message, fileURL } =
+const Card = memo(({ information }) => {
+  const { id, name, company, theme, position, email, message, fileURL } =
     information;
   const url = fileURL || DEFAULT_IMAGE;
+  console.log(id);
   return (
     <li className={`${styles.card} ${getStyles(theme)}`}>
       <img className={styles.userImg} src={url} alt='userImg' />
@@ -18,7 +20,7 @@ const Card = ({ information }) => {
       </div>
     </li>
   );
-};
+});
 
 function getStyles(theme) {
   switch (theme) {

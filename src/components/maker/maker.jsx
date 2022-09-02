@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import Header from '../header/header';
 import Footer from '../footer/footer';
 import styles from './maker.module.css';
@@ -7,16 +7,17 @@ import { useEffect } from 'react';
 import Editor from '../editor/editor';
 import Preview from '../preview/preview';
 import { useState } from 'react';
+import { useCallback } from 'react';
 
 const Maker = ({ FileInput, authService, cardData }) => {
   const loactionState = useLocation().state;
   const [information, setInformation] = useState({});
   const [userId, setuserId] = useState(loactionState && loactionState.id);
-
   const navigate = useNavigate();
-  const onLogOut = () => {
+
+  const onLogOut = useCallback(() => {
     authService.logOut();
-  };
+  }, [authService]);
 
   useEffect(() => {
     authService.onAuthChange((user) => {
@@ -38,23 +39,26 @@ const Maker = ({ FileInput, authService, cardData }) => {
     return () => stopSync();
   }, [cardData, userId]);
 
-  const deleteCard = (card) => {
+  const deleteCard = memo((card) => {
     setInformation((information) => {
       const deleted = { ...information };
       delete deleted[card.id];
       return deleted;
     });
     cardData.removeData(userId, card);
-  };
+  });
 
-  const CreateOrUpdateCard = (card) => {
-    setInformation((information) => {
-      const updated = { ...information };
-      updated[card.id] = card;
-      return updated;
-    });
-    cardData.setData(userId, card);
-  };
+  const CreateOrUpdateCard = useCallback(
+    (card) => {
+      setInformation((information) => {
+        const updated = { ...information };
+        updated[card.id] = card;
+        return updated;
+      });
+      cardData.setData(userId, card);
+    },
+    [cardData, userId]
+  );
 
   return (
     <section className={styles.maker}>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.module.css';
 import App from './app';
@@ -11,9 +11,9 @@ import UserDatabase from './service/user_database';
 const authService = new AuthService(firebaseApp);
 const cardData = new UserDatabase(firebaseApp);
 const cloudinary = new Cloudinary();
-const FileInput = (props) => (
+const FileInput = memo((props) => (
   <ImageFileInput {...props} imageUploader={cloudinary} />
-);
+));
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

@@ -8,6 +8,7 @@ import styles from './login.module.css';
 const Login = ({ authService }) => {
   const navigate = useNavigate();
   const goToMaker = (userId) => {
+    console.log('1');
     navigate('/maker', { state: { id: userId } });
   };
   const onlogin = (e) => {
