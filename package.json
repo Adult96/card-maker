@@ -2,7 +2,7 @@
   "name": "template",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://github.com/Adult96/card-maker",
+  "homepage": "https://adult96.github.io/card-maker/",
   "dependencies": {
     "@cloudinary/react": "^1.4.2",
     "@cloudinary/url-gen": "^1.8.6",
